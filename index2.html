@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Phaser Workshop</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <!-- <script src="js/phaser.min.js"></script> -->
+    <script src="js/phaser.2.4.2.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var game = new Phaser.Game(480, 320, Phaser.AUTO, null, {
+          preload: preload, create: create, update: update
+        });
+
+        var ball;
+
+        function preload() {
+            game.load.baseURL = 'https://end3r.github.io/Gamedev-Phaser-Content-Kit/demos/';
+    game.load.crossOrigin = 'anonymous';
+    
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            game.stage.backgroundColor = '#eee';
+
+            game.load.image("ball", "img/ball.png");
+        }
+        function create() {
+            ball = game.add.sprite(50, 50, "ball");
+
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.physics.enable(ball, Phaser.Physics.ARCADE);
+            ball.body.velocity.set(150, 150);
+            ball.body.gravity.y = 100;
+        }
+        function update() {
+
+        }
+    </script>
+</body>
+</html>
